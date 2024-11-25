@@ -17,21 +17,48 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
-const locations = [];
+const locations = [
+    {
+        name: "town square",
+        "button text": ["Go to store", "Go to cave", "Fight dragon"],
+        "button functions": [goStore, goCave, fightDragon],
+        text: "You are in the town square. You see a sign that says \"Store\"."
+    },
+    {
+        name: "store",
+        "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+        "button functions": [buyHealth, buyWeapon, goTown],
+        text: "You enter the store."
+    }
+];
 
+/*
+array can have objects and objects can have arrays, += inside that same object too.
+*/
+
+
+//Way of accessing objects using both dot notation and big brackets
+
+/*Note: Objects are similar to arrays, arrays can be modified and accessed using index, 
+while objects can be accessed using object's properties.
+Properties consist of a key(name of property) and a value(data stored in property).
+*/
+/*
 const cat = {
     name: "Whiskers",
     "Number of legs": 4,
 }
 console.log(cat.name);
+console.log(cat["Number of legs"]);
+*/
 
 // initialize buttons
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-function update(location){
-    
+function update(location) {
+
 }
 
 function goTown() {
