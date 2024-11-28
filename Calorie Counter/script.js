@@ -28,5 +28,8 @@ function isInvalidInput(str) {
 }
 function addEntry() {
     let targetId = '#' + entryDropdown.value;
-    let targetInputContainer = document.querySelector(targetId + " .input-container");
+    //let targetInputContainer = document.querySelector(targetId + " .input-container");
+    // ADD A TEMPLATE LITERAL TO PASS VARIABLE TO THE SRTING
+    const targetInputContainer = document.querySelector(`${targetId} .input-container`);
+
 }
