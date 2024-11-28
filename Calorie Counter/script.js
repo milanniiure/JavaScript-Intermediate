@@ -55,6 +55,7 @@ function getCaloriesFromInputs(list) {
     }
     return calories;
 }
+//A NodeList is an array-like object, which means you can iterate through it and it shares some common methods with an array
 
 function calculateCalories(e) {
     e.preventDefault();
@@ -72,6 +73,11 @@ function calculateCalories(e) {
     const snacksCalories = getCaloriesFromInputs(snacksNumberInputs);
     const exerciseCalories = getCaloriesFromInputs(exerciseNumberInputs);
 
-}
+    if (isError) {
+        return;
+    }
+    const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
+    const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
 
+}
 addEntryButton.addEventListener("click", addEntry);
