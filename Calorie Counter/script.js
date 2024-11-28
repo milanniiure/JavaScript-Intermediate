@@ -26,6 +26,9 @@ function isInvalidInput(str) {
 
     */
 }
+//A NodeList is an array-like object, which means you can iterate through it and it shares some common methods with an array
+
+
 function addEntry() {
     const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
     const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length + 1;
@@ -38,24 +41,6 @@ function addEntry() {
     `;
     targetInputContainer.insertAdjacentHTML("beforeend", HTMLString);
 }
-
-function getCaloriesFromInputs(list) {
-    let calories = 0;
-
-    for (const item of list) {
-        const currVal = cleanInputString(item.value);
-        const invalidInputMatch = isInvalidInput(currVal);
-
-        if (invalidInputMatch) {
-            alert(`Invalid Input: ${invalidInputMatch[0]}`);
-            isError = true;
-            return null;
-        }
-        calories += Number(currVal);
-    }
-    return calories;
-}
-//A NodeList is an array-like object, which means you can iterate through it and it shares some common methods with an array
 
 function calculateCalories(e) {
     e.preventDefault();
@@ -86,5 +71,38 @@ function calculateCalories(e) {
     <p>${consumedCalories} Calories Consumed</p>
     <p>${exerciseCalories} Calories Burned</p>
     `;
+    output.classList.remove('hide');
+
 }
+function getCaloriesFromInputs(list) {
+    let calories = 0;
+
+    for (const item of list) {
+        const currVal = cleanInputString(item.value);
+        const invalidInputMatch = isInvalidInput(currVal);
+
+        if (invalidInputMatch) {
+            alert(`Invalid Input: ${invalidInputMatch[0]}`);
+            isError = true;
+            return null;
+        }
+        calories += Number(currVal);
+    }
+    return calories;
+}
+
+function clearForm() {
+    const inputContainers = Array.from(document.querySelectorAll('.input-container'));
+
+    for (const container of inputContainers) {
+        container.innerHTML = '';
+    }
+
+    budgetNumberInput.value = '';
+    output.innerText = '';
+    output.classList.add('hide');
+}
+
 addEntryButton.addEventListener("click", addEntry);
+calorieCounter.addEventListener("submit", calculateCalories);
+clearButton.addEventListener("click", clearForm);
