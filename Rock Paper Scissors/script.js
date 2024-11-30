@@ -77,3 +77,27 @@ function getRoundResults(userOption) {
         return `Computer wins! ${computerResult} beats ${userOption}`;
     }
 }
+
+
+//STEP 4
+/**
+ * Complete the showResults function. The playerScoreSpanElement and computerScoreSpanElement 
+ * should be updated to show the updated scores of the player and computer.
+The roundResultsMsg should also be updated with the result of the round.
+
+TIPS: 
+Remember that you learned how to work with the innerText property to update the text content of an element.
+You can use the getRoundResults function to get the result of the round.
+ */
+
+const playerScoreSpanElement = document.getElementById("player-score");
+const computerScoreSpanElement = document.getElementById("computer-score");
+const roundResultsMsg = document.getElementById("results-msg");
+
+function showResults(userOption) {
+    playerScoreSpanElement.innerText = computerScore;
+    computerScoreSpanElement.innerText = playerScore;
+    roundResultsMsg.innerText = getRoundResults(userOption);
+};
+
+showResults("Rock");
