@@ -11,15 +11,11 @@ This will represent the index number for the options array.
 You can use the random index to access the option from the options array.
  */
 
-
 function getRandomComputerResult() {
     const options = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * options.length);
     return options[randomIndex];
 }
-console.log(getRandomComputerResult());
-
-
 
 //STEP 2
 /**
@@ -34,16 +30,11 @@ If the player chooses "Paper" and the computer chooses "Rock"
  */
 
 function hasPlayerWonTheRound(player, computer) {
-    if (player === "Rock" && computer === "Scissors" || player === "Scissors" && computer === "Paper" || player === "Paper" && computer === "Rock") {
-        return true;
-    } else {
-        return false;
-    }
+    return (player === "Rock" && computer === "Scissors" ||
+        player === "Scissors" && computer === "Paper" ||
+        player === "Paper" && computer === "Rock"
+    );
 }
-
-console.log(hasPlayerWonTheRound("Rock", "Scissors"));
-console.log(hasPlayerWonTheRound("Scissors", "Rock"));
-
 
 //STEP 3
 /**
@@ -78,7 +69,6 @@ function getRoundResults(userOption) {
     }
 }
 
-
 //STEP 4
 /**
  * Complete the showResults function. The playerScoreSpanElement and computerScoreSpanElement 
@@ -93,7 +83,9 @@ You can use the getRoundResults function to get the result of the round.
 const playerScoreSpanElement = document.getElementById("player-score");
 const computerScoreSpanElement = document.getElementById("computer-score");
 const roundResultsMsg = document.getElementById("results-msg");
-
+const winnerMsgElement = document.getElementById("winner-msg");
+const optionsContainer = document.querySelector(".options-container");
+const resetGameBtn = document.getElementById("reset-game-btn");
 
 //STEP 5
 /*
@@ -114,22 +106,49 @@ TIPS:
 Use the style.display property on an element, with the value "block" or "none", to show or hide the element.
 */
 
-
 function showResults(userOption) {
     roundResultsMsg.innerText = getRoundResults(userOption);
     computerScoreSpanElement.innerText = computerScore;
     playerScoreSpanElement.innerText = playerScore;
-    if (playerScore >= 3 && computerScore <= 3) {
-        optionsContainer.style.display = "none";
-        resetGameBtn.style.display = "block";
-        return winnerMsgElement.innerText = "Player has won the game!";
-    } else {
-        optionsContainer.style.display = "none";
-        resetGameBtn.style.display = "block";
-        return winnerMsgElement.innerText = "Computer has won the game!";
-    }
 
+    if (playerScore === 3 || computerScore === 3) {
+        winnerMsgElement.innerText = `${playerScore === 3 ? "Player" : "Computer"
+            } has won the game!`;
+
+        resetGameBtn.style.display = "block";
+        optionsContainer.style.display = "none";
+    }
 };
+
+//STEP 6
+/**
+ * If the player or computer has won the game, there should be an option to reset the game and play again.
+Complete the resetGame function that accomplishes the following:
+Resets the player and computer scores to 0.
+Updates the playerScoreSpanElement and computerScoreSpanElement to display the new scores.
+Hides the resetGameBtn button.
+Shows the optionsContainer so the player can play again.
+Clears the content for the winnerMsgElement and roundResultsMsg elements.
+
+//TIPS
+You can use the innerText property to update the content of an element. 
+To clear the content of an element, you can set the innerText to an empty string.
+Once you apply those changes, you will have completed the Rock, Paper, Scissors game!
+ */
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreSpanElement.innerText = 0;
+    computerScoreSpanElement.innerText = 0;
+    resetGameBtn.style.display = "none";
+    optionsContainer.style.display = "block";
+    winnerMsgElement.innerText = "";
+    roundResultsMsg.innerText = "";
+};
+
+
+resetGameBtn.addEventListener("click", resetGame);
 
 const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
@@ -146,3 +165,4 @@ paperBtn.addEventListener("click", function () {
 scissorsBtn.addEventListener("click", function () {
     showResults("Scissors");
 });
+
