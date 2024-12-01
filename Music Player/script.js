@@ -79,3 +79,14 @@ const allSongs = [
 ];
 
 const audio = new Audio();
+
+let userData = {
+    songs: [...allSongs],
+    currentSong: null,
+    songCurrentTime: 0,
+};
+
+//Arrow Function : It does not have name and a shorter way to write function
+const printGreeting = () => {
+    console.log("Hello there!");
+}
