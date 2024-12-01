@@ -92,12 +92,24 @@ const audio = new Audio();
  * ARROW FUNCTION WITH ONE PARAMETER
  * const greet = (name) => {
  * console.log(`Hello, ${name}!`);
+ * };
  * 
  * AND IF IT HAS ONLY ONE PARAMETER YOU CAN OMIT PARENTHESES
  * const greet = name => {
  * console.log(`Hello, ${name}!`);
 };
-};
+AND IF IT HAS SIMPLE EXPRESSIONS YOU CAN WRITE IT LIKE THIS
+const multiplyTwoNumbers = (num1, num2) => num1 * num2;
+console.log(multiplyTwoNumbers(3,4));
+
+If your arrow function has multiple lines of code in the function body,
+then you need to use the return keyword and the curly braces {}
+
+ARROW FUNCTION WITH TWO PARAMETERS
+const addTwoNumbers = (num1, num2) => {
+    return num1 + num2;
+}
+console.log(addTwoNumbers(3,4));
  */
 let userData = {
     songs: [...allSongs],
@@ -116,3 +128,8 @@ const printMessage = org => {
 }
 
 printMessage('freeCodeCamp');
+
+
+//IMPLICIT RETURN 
+const addTwoNumbers = (num1, num2) => num1 + num2;
+console.log(addTwoNumbers(3,4));
