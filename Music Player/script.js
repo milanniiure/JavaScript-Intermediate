@@ -80,6 +80,25 @@ const allSongs = [
 
 const audio = new Audio();
 
+
+/**
+ * The spread operator (...) allows you to copy all elements from one array into another.
+ * It can also be used to concatenate multiple arrays into one.
+ * const arr1 = [1, 2, 3];
+ * const arr2 = [4, 5, 6];
+ * const combinedArr = [...arr1, ...arr2];
+ * console.log(combinedArr); // Output: [1, 2, 3, 4, 5, 6]
+ * 
+ * ARROW FUNCTION WITH ONE PARAMETER
+ * const greet = (name) => {
+ * console.log(`Hello, ${name}!`);
+ * 
+ * AND IF IT HAS ONLY ONE PARAMETER YOU CAN OMIT PARENTHESES
+ * const greet = name => {
+ * console.log(`Hello, ${name}!`);
+};
+};
+ */
 let userData = {
     songs: [...allSongs],
     currentSong: null,
@@ -90,3 +109,10 @@ let userData = {
 const printGreeting = () => {
     console.log("Hello there!");
 }
+printGreeting();// calling the arrow function
+
+const printMessage = org => {
+    console.log(`${org} is awesome!`);
+}
+
+printMessage('freeCodeCamp');
