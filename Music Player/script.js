@@ -117,6 +117,17 @@ let userData = {
     currentSong: null,
     songCurrentTime: 0,
 };
+const playSong = (id) => {
+    const song = userData?.songs.find((song) => song.id === id);
+    audio.src = song.src;
+    audio.title = song.title;
+
+    if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+        audio.currentTime = 0;
+    } else {
+        audio.currentTime = userData?.songCurrentTime;
+    }
+};
 
 /*
 Arrow Function : It does not have name and a shorter way to write function
@@ -124,14 +135,14 @@ const printGreeting = () => {
     console.log("Hello there!");
 }
 printGreeting();// calling the arrow function
-
+ 
 const printMessage = org => {
     console.log(`${org} is awesome!`);
 }
-
+ 
 printMessage('freeCodeCamp');
-
-
+ 
+ 
 //IMPLICIT RETURN 
 const addTwoNumbers = (num1, num2) => num1 + num2;
 console.log(addTwoNumbers(3,4));
@@ -173,7 +184,7 @@ const sortSongs = () => {
 };
 
 
-renderSongs(userData?.songs); //Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined
+renderSongs(sortSongs()); //Optional chaining (?.) helps prevent errors when accessing nested properties that might be null or undefined
 
 /**
  * map() method is used to iterate through an array and return a new array.
