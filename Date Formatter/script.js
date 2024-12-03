@@ -16,33 +16,48 @@ currentDateParagraph.textContent = formattedDate;
 dateOptionsSelectElement.addEventListener("change", () => {
     switch (dateOptionsSelectElement.value) {
         case "yyyy-mm-dd":
-            currentDateParagraph.textContent = formattedDate
+            currentDateParagraph.textContent = formattedDate.split("-").reverse().join("-");
+            break;
     }
 });
 
-/*
-The split() method is used to divide a string into substrings based on a specified separator. 
+/* SPLIT METHOD
+The split() method is used to divide a string into substrings based on a specified separator.
 It then returns these substrings as elements of an array.
-EXAMPLE: 
+EXAMPLE:
 const greeting = "Hello World";
 greeting.split(); // ["Hello World"]
 
 The split method takes in a parameter known as a separator.
 The separator is used to tell the computer where each split should occur.
-
+eg.
 "hello".split(""); // returns ["h", "e", "l", "l", "o"]
 
 Note: you have to provide a separator otherwise method will return an array with original string as the only element.
 */
 
-/*
+/*REVERSE METHOD
 To reverse an array of elements, there is reverse() method.
 This method reverses the order of the elements in the array in place.
 The first element becomes the last, and the last element becomes the first.
-EXAMPLE:
+eg.
 [1, 2, 3, 4, 5].reverse(); // returns [5, 4, 3, 2, 1]
 */
 
 /*
 METHOD CHAINING: method1().method2().method3();
+*/
+
+/*JOIN METHOD
+This method takes an array of elements and joins them into a string.
+Similar to the split method, the join method also takes an optional separator.
+If you don't provide a separator, the default separator is a comma.
+
+eg.
+[1, 2, 3, 4, 5].join("-"); // returns "1-2-3-4-5"
+*/
+////////////////// EXAMPLE TO TRY OUT ONE BY ONE //////////////////
+/*
+const exampleSentence = "selur pmaCedoCeerf".split("").reverse("").join("");
+console.log(exampleSentence);
 */
