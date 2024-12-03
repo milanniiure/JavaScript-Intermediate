@@ -7,3 +7,15 @@ const month = date.getMonth() + 1; // we did +1 to the getMonth method cause it 
 const year = date.getFullYear(); //The .getFullYear() method returns a number which represents the year for the provided date.
 const hours = date.getHours(); //The .getHours() method returns a number between 0 and 23. 0 is midinight and 23 is 11 pm.
 const minutes = date.getMinutes(); //The .getMinutes() method returns a number between 0 and 59
+
+const formattedDate = `${day}-${month}-${year}`;
+//console.log(formattedDate);
+currentDateParagraph.textContent = formattedDate;
+
+// the change event is used to detect when the value of an HTML element has changed:
+dateOptionsSelectElement.addEventListener("change", () => {
+    switch (dateOptionsSelectElement.value) {
+        case "yyyy-mm-dd":
+            currentDateParagraph.textContent = formattedDate
+    }
+});
