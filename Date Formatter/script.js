@@ -19,3 +19,30 @@ dateOptionsSelectElement.addEventListener("change", () => {
             currentDateParagraph.textContent = formattedDate
     }
 });
+
+/*
+The split() method is used to divide a string into substrings based on a specified separator. 
+It then returns these substrings as elements of an array.
+EXAMPLE: 
+const greeting = "Hello World";
+greeting.split(); // ["Hello World"]
+
+The split method takes in a parameter known as a separator.
+The separator is used to tell the computer where each split should occur.
+
+"hello".split(""); // returns ["h", "e", "l", "l", "o"]
+
+Note: you have to provide a separator otherwise method will return an array with original string as the only element.
+*/
+
+/*
+To reverse an array of elements, there is reverse() method.
+This method reverses the order of the elements in the array in place.
+The first element becomes the last, and the last element becomes the first.
+EXAMPLE:
+[1, 2, 3, 4, 5].reverse(); // returns [5, 4, 3, 2, 1]
+*/
+
+/*
+METHOD CHAINING: method1().method2().method3();
+*/
