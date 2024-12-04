@@ -171,3 +171,25 @@ const myFavoriteFootballTeam = {
         },
     ],
 };
+
+Object.freeze(myFavoriteFootballTeam); //object.freeze(obj) is used to freeze object so that we can't change the properties of objects later
+
+
+//The object destructuring syntax allows you to unpack values from arrays and objects:
+/* DESTRUCTRING ASSIGNMENT
+eg.
+const developerObj = {
+    name: "Jessica Wilkins",
+    isDeveloper: true
+};
+
+// Object destructuring
+const { name, isDeveloper } = developerObj;
+*/
+const { sport, team, year, players } = myFavoriteFootballTeam;
+const { coachName } = myFavoriteFootballTeam.headCoach;
+
+typeOfSport.textContent = sport;
+teamName.textContent = team;
+worldCupYear.textContent = year;
+headCoach.textContent = coachName;
