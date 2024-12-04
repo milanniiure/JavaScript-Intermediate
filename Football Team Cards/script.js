@@ -213,5 +213,20 @@ const setPlayerCards = (arr = players) => {
         </div>
         `;
         }
-    );
+    ).join("");
 };
+
+
+playersDropdownList.addEventListener("change", (e) => {
+    playerCards.innerHTML = "";
+    //e.target.value represents the value property from the playersDropdownList element. 
+    switch (e.target.value) {
+        case "nickname":
+            setPlayerCards(players.filter((player) => player.nickname !== null));
+            break;
+
+
+
+
+    }
+});
