@@ -17,6 +17,20 @@ you learned how to add and remove classes from an element with el.classList.add(
 const taskData = [];
 let currentTask = {};
 
+const addOrUpdateTask = () => {
+    const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
+    const taskObj = {
+        id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+        title: titleInput.value,
+        date: dateInput.value,
+        description: descriptionInput.value,
+    };
+
+    if (dataArrIndex === -1) {
+        taskData.unshift(taskObj);
+    }
+};
+
 const reset = () => {
     titleInput.value = "";
     dateInput.value = "";
@@ -31,29 +45,23 @@ openTaskFormBtn.addEventListener("click", () =>
 
 closeTaskFormBtn.addEventListener("click", () => {
     confirmCloseDialog.showModal();
+    const formInputsContainValues = titleInput.value || dateInput.value || descriptionInput.value;
+    if (formInputsContainValues) {
+        confirmCloseDialog.showModal();
+    } else {
+        reset();
+    }
 });
 
 cancelBtn.addEventListener("click", () => confirmCloseDialog.close());
 
 discardBtn.addEventListener("click", () => {
     confirmCloseDialog.close();
-    taskForm.classList.toggle("hidden");
+    reset();
 });
 
 taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
-    const taskObj = {
-        id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-        title: titleInput.value,
-        date: dateInput.value,
-        description: descriptionInput.value,
-    };
-
-    if (dataArrIndex === -1) {
-        taskData.unshift(taskObj);
-    }
 
     taskData.forEach(({ id, title, date, description }) => {
         tasksContainer.innerHTML += `
@@ -67,4 +75,5 @@ taskForm.addEventListener("submit", (e) => {
         `
     }
     );
+    reset();
 });
