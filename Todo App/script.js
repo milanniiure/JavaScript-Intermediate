@@ -17,6 +17,14 @@ you learned how to add and remove classes from an element with el.classList.add(
 const taskData = [];
 let currentTask = {};
 
+const reset = () => {
+    titleInput.value = "";
+    dateInput.value = "";
+    descriptionInput.value = "";
+    taskForm.classList.toggle("hidden");
+    currentTask = {};
+}
+
 openTaskFormBtn.addEventListener("click", () =>
     taskForm.classList.toggle("hidden")
 );
