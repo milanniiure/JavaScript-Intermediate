@@ -9,3 +9,25 @@ const tasksContainer = document.getElementById("tasks-container");
 const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
+
+/*
+In earlier projects, 
+you learned how to add and remove classes from an element with el.classList.add() and el.classList.remove().
+*/
+const taskData = [];
+let currentTask = {};
+
+openTaskFormBtn.addEventListener("click", () =>
+    taskForm.classList.toggle("hidden")
+);
+
+closeTaskFormBtn.addEventListener("click", () => {
+    confirmCloseDialog.showModal();
+});
+
+cancelBtn.addEventListener("click", () => confirmCloseDialog.close());
+
+discardBtn.addEventListener("click", () => {
+    confirmCloseDialog.close();
+    taskForm.classList.toggle("hidden");
+});
