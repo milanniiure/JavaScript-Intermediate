@@ -17,8 +17,7 @@ you learned how to add and remove classes from an element with el.classList.add(
 const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
 const removeSpecialChars = (val) => {
-    const result = val.replaceAll(/[^A-Za-z0-9\-\s]/g, '')
-    return result;
+    return val.replaceAll(/[^A-Za-z0-9\-\s]/g, '')
 }
 
 const addOrUpdateTask = () => {
@@ -28,10 +27,10 @@ const addOrUpdateTask = () => {
     }
     const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
     const taskObj = {
-        id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-        title: titleInput.value,
-        date: dateInput.value,
-        description: descriptionInput.value,
+        id: `${removeSpecialChars(titleInput.value).toLowerCase().split(" ").join("-")}-${Date.now()}`,
+        title: removeSpecialChars(titleInput.value),
+        date: removeSpecialChars(dateInput.value),
+        description: removeSpecialChars(descriptionInput.value),
     };
 
     if (dataArrIndex === -1) {
@@ -49,7 +48,7 @@ const updateTaskContainer = () => {
 
     taskData.forEach(
         ({ id, title, date, description }) => {
-            tasksContainer.innerHTML += `
+            (tasksContainer.innerHTML += `
             <div class="task" id="${id}">
             <p><strong>Title:</strong> ${title}</p>
             <p><strong>Date:</strong> ${date}</p>
@@ -57,7 +56,7 @@ const updateTaskContainer = () => {
             <button onclick="editTask(this)" type="button" class="btn">Edit</button>
             <button onclick="deleteTask(this)" type="button" class="btn">Delete</button>
             </div>
-        `
+        `)
         }
     );
 };
