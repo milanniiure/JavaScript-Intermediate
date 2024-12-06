@@ -16,6 +16,10 @@ you learned how to add and remove classes from an element with el.classList.add(
 */
 const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
+const removeSpecialChars = (val) => {
+    const result = val.replaceAll(/[^A-Za-z0-9\-\s]/g, '')
+    return result;
+}
 
 const addOrUpdateTask = () => {
     if (!titleInput.value.trim()) {
