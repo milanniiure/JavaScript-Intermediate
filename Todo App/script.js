@@ -29,9 +29,13 @@ const addOrUpdateTask = () => {
     if (dataArrIndex === -1) {
         taskData.unshift(taskObj);
     }
+    updateTaskContainer();
+    reset();
 };
 
 const updateTaskContainer = () => {
+    tasksContainer.innerHTML = "";
+
     taskData.forEach(
         ({ id, title, date, description }) => {
             tasksContainer.innerHTML += `
@@ -39,13 +43,35 @@ const updateTaskContainer = () => {
             <p><strong>Title:</strong> ${title}</p>
             <p><strong>Date:</strong> ${date}</p>
             <p><strong>Description:</strong> ${description}</p>
-            <button type="button" class="btn">Edit</button>
-            <button type="button" class="btn">Delete</button>
+            <button onclick="editTask(this)" type="button" class="btn">Edit</button>
+            <button onclick="deleteTask(this)" type="button" class="btn">Delete</button>
             </div>
         `
         }
     );
+};
+
+const deleteTask = (buttonEl) => {
+    const dataArrIndex = taskData.findIndex((item) => item.id === buttonEl.parentElement.id);
+    buttonEl.parentElement.remove();
+    taskData.splice(dataArrIndex, 1);
 }
+
+
+/*
+splice() is an array method that modifies arrays by removing, replacing, or adding elements at a specified index, 
+while also returning the removed elements. It can take up to three arguments: 
+the first one is the mandatory index at which to start, the second is the number of items to remove, 
+and the third is an optional replacement element.
+eg.
+const fruits = ["mango", "date", "cherry", "banana", "apple"];
+
+// Remove date and cherry from the array starting at index 1
+const removedFruits = fruits.splice(1, 2);
+
+console.log(fruits); // [ 'mango', 'banana', 'apple' ]
+console.log(removedFruits); // [ 'date', 'cherry' ]
+*/
 
 const reset = () => {
     titleInput.value = "";
@@ -78,18 +104,6 @@ discardBtn.addEventListener("click", () => {
 
 taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    addOrUpdateTask();
 
-    taskData.forEach(({ id, title, date, description }) => {
-        tasksContainer.innerHTML += `
-            <div class="task" id="${id}">
-            <p><strong>Title:</strong> ${title}</p>
-            <p><strong>Date:</strong> ${date}</p>
-            <p><strong>Description:</strong> ${description}</p>
-            <button type="button" class="btn">Edit</button>
-            <button type="button" class="btn">Delete</button>
-            </div>
-        `
-    }
-    );
-    reset();
 });
