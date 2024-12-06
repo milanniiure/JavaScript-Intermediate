@@ -31,6 +31,7 @@ const addOrUpdateTask = () => {
     } else {
         taskData[dataArrIndex] = taskObj;
     }
+    localStorage.setItem("data", JSON.stringify(taskData));
     updateTaskContainer();
     reset();
 };
@@ -126,7 +127,7 @@ taskForm.addEventListener("submit", (e) => {
     addOrUpdateTask();
 
 });
-
+/*
 const myTaskArr = [
     { task: "Walk the Dog", date: "22-04-2022" },
     { task: "Read some books", date: "02-11-2023" },
@@ -139,3 +140,7 @@ const getTaskArr = localStorage.getItem("data");
 console.log(getTaskArr);
 const getTaskArrObj = JSON.parse(localStorage.getItem("data"));
 console.log(getTaskArrObj);
+
+localStorage.removeItem("data"); // console will show : null
+localStorage.clear(); // No need to pass data as arguments
+*/
