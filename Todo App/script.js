@@ -14,7 +14,7 @@ const descriptionInput = document.getElementById("description-input");
 In earlier projects, 
 you learned how to add and remove classes from an element with el.classList.add() and el.classList.remove().
 */
-const taskData = [];
+const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
 
 const addOrUpdateTask = () => {
@@ -58,6 +58,8 @@ const deleteTask = (buttonEl) => {
     const dataArrIndex = taskData.findIndex((item) => item.id === buttonEl.parentElement.id);
     buttonEl.parentElement.remove();
     taskData.splice(dataArrIndex, 1);
+    localStorage.setItem("data",JSON.stringify(taskData));
+
 }
 
 const editTask = (buttonEl) => {
