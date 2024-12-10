@@ -9,6 +9,28 @@ or the result of dividing two numbers, is 0. But since
  while loop to run a block of code as long as input is greater than 0 and can be divided.
 */
 
+const decimalToBinary = (input) => {
+    const inputs = [];
+    const quotients = [];
+    const remainders = [];
+
+    while (input > 0) {
+        const quotient = Math.floor(input / 2);
+        const remainder = input % 2;
+
+        inputs.push(input);
+        quotients.push(quotient);
+        remainders.push(remainder);
+        input = quotient;
+    }
+
+    console.log("Inputs: ", inputs);
+    console.log("Quotients: ", quotients);
+    console.log("Remainders: ", remainders);
+
+
+};
+
 
 const checkUserInput = () => {
     if (
