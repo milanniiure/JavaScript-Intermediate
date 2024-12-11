@@ -13,8 +13,11 @@ or the result of dividing two numbers, is 0. But since
 */
 const decimalToBinary = (input) => {
     if (input === 0) {
-        return "";
-    } else {
+        return "0";
+    } else if (input === 1) {
+        return "1";
+    }
+    else {
         return decimalToBinary(Math.floor(input / 2)) + (input % 2);
     }
 };
@@ -57,19 +60,29 @@ const countdown = (number) => {
 
 countdown(3);
 */
+const showAnimation = () => {
+
+};
+const inputInt = parseInt(numberInput.value);
 
 
 const checkUserInput = () => {
+    const inputInt = parseInt(numberInput.value);
     if (
         !numberInput.value ||
-        isNaN(parseInt(numberInput.value)) ||
-        parseInt(numberInput.value) < 0
+        isNaN(inputInt) ||
+        inputInt < 0
     ) {
         alert("Please provide a decimal number greater than or equal to 0");
         return;
     }
 
-    result.textContent = decimalToBinary(parseInt(numberInput.value));
+    if (inputInt === 5) {
+        showAnimation();
+        return;
+    }
+
+    result.textContent = decimalToBinary(inputInt);
     numberInput.value = "";
 
 };
