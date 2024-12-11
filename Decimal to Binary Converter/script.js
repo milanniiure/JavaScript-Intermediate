@@ -1,9 +1,20 @@
-
-
-
 const numberInput = document.getElementById("number-input");
 const convertBtn = document.getElementById("convert-btn");
 const result = document.getElementById("result");
+const animationData = [
+    {
+        inputVal: 5,
+        addElDelay: 1000
+    },
+    {
+        inputVal: 2,
+        addElDelay: 1500
+    },
+    {
+        inputVal: 1,
+        addElDelay: 2000
+    }
+];
 
 /*
 For the decimal to binary conversion, you need to divide input by 2 until the quotient, 
@@ -12,10 +23,8 @@ or the result of dividing two numbers, is 0. But since
  while loop to run a block of code as long as input is greater than 0 and can be divided.
 */
 const decimalToBinary = (input) => {
-    if (input === 0) {
-        return "0";
-    } else if (input === 1) {
-        return "1";
+    if (input === 0 || input === 1) {
+        return String(input);
     }
     else {
         return decimalToBinary(Math.floor(input / 2)) + (input % 2);
@@ -61,10 +70,16 @@ const countdown = (number) => {
 countdown(3);
 */
 const showAnimation = () => {
-
+    setTimeout(() => {
+        console.log("free");
+    }, 500);
+    setTimeout(() => {
+        console.log("Code");
+    }, 1000);
+    setTimeout(() => {
+        console.log("Camp");
+    }, 1500);
 };
-const inputInt = parseInt(numberInput.value);
-
 
 const checkUserInput = () => {
     const inputInt = parseInt(numberInput.value);
