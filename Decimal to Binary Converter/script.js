@@ -8,8 +8,24 @@ or the result of dividing two numbers, is 0. But since
  you don't know how many times you need to divide input by 2, you can use a 
  while loop to run a block of code as long as input is greater than 0 and can be divided.
 */
-
 const decimalToBinary = (input) => {
+    let binary = "";
+
+    if (input === 0) {
+        binary = "0";
+    }
+
+    while (input > 0) {
+        binary = (input % 2) + binary;
+        input = Math.floor(input / 2);
+    }
+
+    result.innerText = binary;
+};
+
+/*DETAILED METHOD
+const decimalToBinary = (input) => {
+    
     const inputs = [];
     const quotients = [];
     const remainders = [];
@@ -28,8 +44,9 @@ const decimalToBinary = (input) => {
     console.log("Quotients: ", quotients);
     console.log("Remainders: ", remainders);
 
-
+    result.innerText = remainders.reverse().join("");
 };
+*/
 
 
 const checkUserInput = () => {
