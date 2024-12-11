@@ -1,14 +1,4 @@
-const a = () => {
-    return "freeCodeCamp " + b();
-};
 
-const b = () => {
-    return "is " + c();
-};
-
-const c = () => {
-    return "awesome!";
-};
 
 
 const numberInput = document.getElementById("number-input");
@@ -22,21 +12,12 @@ or the result of dividing two numbers, is 0. But since
  while loop to run a block of code as long as input is greater than 0 and can be divided.
 */
 const decimalToBinary = (input) => {
-    let binary = "";
-
     if (input === 0) {
-        binary = "0";
+        return "";
+    } else {
+        return decimalToBinary(Math.floor(input / 2)) + (input % 2);
     }
-
-    while (input > 0) {
-        binary = (input % 2) + binary;
-        input = Math.floor(input / 2);
-    }
-
-    result.innerText = binary;
 };
-
-
 
 /*DETAILED METHOD
 const decimalToBinary = (input) => {
@@ -63,6 +44,20 @@ const decimalToBinary = (input) => {
 };
 */
 
+/*RECURSIVE FUNCTION WORKING MECHANISM
+const countdown = (number) => {
+    console.log(number);
+
+    if (number === 0) {
+        return;
+    } else {
+        countdown(number - 1);
+    }
+};
+
+countdown(3);
+*/
+
 
 const checkUserInput = () => {
     if (
@@ -74,7 +69,7 @@ const checkUserInput = () => {
         return;
     }
 
-    decimalToBinary(parseInt(numberInput.value));
+    result.textContent = decimalToBinary(parseInt(numberInput.value));
     numberInput.value = "";
 
 };
