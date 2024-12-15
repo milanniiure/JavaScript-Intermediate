@@ -41,9 +41,30 @@ and 0 if the two elements should remain in their current positions.
 
 const getMode = (array) => {
     const counts = {};
-    array.forEach(el => counts[el] = counts[el] ? counts[el] + 1 : 1);
-    console.log(counts)
-    return counts;
+    array.forEach((el) => {
+        counts[el] = (counts[el] || 0) + 1;
+    })
+    if (new Set(Object.values(counts)).size === 1) {
+        return null;
+    }
+    const highest = Object.keys(counts).sort(
+        (a, b) => counts[b] - counts[a]
+    )[0];
+    const mode = Object.keys(counts).filter(
+        (el) => counts[el] === counts[highest]
+    );
+    return mode.join(", ");
+}
+/*
+when calculating the mode of a dataset. First, if every value appears the same number of times, there is no mode.
+
+To calculate this, you will use a Set. A Set is a data structure that only allows unique values.
+If you pass an array into the Set constructor, it will remove any duplicate values.
+*/
+
+
+const getRange = (array) => {
+    return Math.max(...array) - Math.min(...array);
 }
 
 const calculate = () => {
@@ -53,10 +74,17 @@ const calculate = () => {
 
     const mean = getMean(numbers);
     const median = getMedian(numbers);
+    const mode = getMode(numbers);
+    const range = getRange(numbers);
+
 
 
     document.querySelector("#mean").textContent = mean;
     document.querySelector("#median").textContent = median;
+    document.querySelector("#mode").textContent = mode;
+    document.querySelector("#range").textContent = range;
+
+
 
 
 }
