@@ -39,6 +39,13 @@ a value greater than 0 if the first element should come after the second element
 and 0 if the two elements should remain in their current positions.
 */
 
+const getMode = (array) => {
+    const counts = {};
+    array.forEach(el => counts[el] = counts[el] ? counts[el] + 1 : 1);
+    console.log(counts)
+    return counts;
+}
+
 const calculate = () => {
     const value = document.querySelector("#numbers").value;
     const array = value.split(/,\s*/g);
