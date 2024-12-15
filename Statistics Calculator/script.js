@@ -8,8 +8,24 @@ const getMean = (array) => {
 }
 */
 const getMedian = (array) => {
-    const sorted = array.sort((a, b) => a - b);
+    const sorted = array.toSorted((a, b) => a - b);
+    const median =
+        sorted.length % 2 === 0
+            ? getMean([sorted[sorted.length / 2], sorted[sorted.length / 2 - 1]])
+            : sorted[Math.floor(sorted.length / 2)];
+    return median;
 }
+
+/*
+const testArr1 = [1, 2, 3, 4, 5];
+const testArr2 = [1, 2, 3, 4, 5, 6];
+const isEven = testArr2.length % 2 === 0;
+console.log(isEven);
+const oddListMedian = testArr1[Math.floor(testArr1.length / 2)];
+console.log(oddListMedian);
+const evenListMedian = getMean([testArr2[testArr2.length / 2 - 1], testArr2[testArr2.length / 2]]);
+console.log(evenListMedian);
+*/
 
 /*
 By default, the .sort() method converts the elements of an array into strings, then sorts them alphabetically. 
@@ -29,6 +45,11 @@ const calculate = () => {
     const numbers = array.map(el => Number(el)).filter(el => !isNaN(el));
 
     const mean = getMean(numbers);
+    const median = getMedian(numbers);
+
+
     document.querySelector("#mean").textContent = mean;
+    document.querySelector("#median").textContent = median;
+
 
 }
