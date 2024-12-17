@@ -18,8 +18,33 @@ const charRange = (start, end) => range(start.charCodeAt(0), end.charCodeAt(0)).
 const evalFormula = (x, cells) => {
     const idToText = id => cells.find(cell => cell.id === id).value;
     const rangeRegex = /([A-J])([1-9][0-9]?):([A-J])([1-9][0-9]?)/gi;
-
+    const rangeFromString = (num1, num2) => range(parseInt(num1), parseInt(num2));
+    const elemValue = num => character => idToText(character + num);
+    const addCharacters = character1 => character2 => num => charRange(character1, character2).map();
 }
+
+/*
+The concept of returning a function within a function is called currying. 
+This approach allows you to create a variable that holds a function to be called later, 
+but with a reference to the parameters of the outer function call.
+
+eg.
+const curry = soup => veggies => {};
+
+curry is a function which takes a soup parameter and 
+returns a function which takes a veggies paramete
+*/
+
+
+
+/*
+You can pass a function reference as a callback parameter.
+A function reference is a function name without the parentheses.
+eg.
+const myFunc = (val) => `value: ${val}`;
+const array = [1, 2, 3];
+const newArray = array.map(myFunc);
+*/
 
 window.onload = () => {
     const container = document.getElementById("container");
