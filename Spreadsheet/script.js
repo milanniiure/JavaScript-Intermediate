@@ -32,6 +32,13 @@ const spreadsheetFunctions = {
     median
 }
 
+const applyFunction = str => {
+    const noHigh = highPrecedence(str);
+    const infix = /([\d.]+)([+-])([\d.]+)/;
+    const str2 = infixEval(noHigh, infix);
+    const functionCall = /([a-z0-9]*)\(([0-9., ]*)\)(?!.*\()/i;//This expression looks for function calls like sum(1, 4).
+}
+
 const range = (start, end) => Array(end - start + 1).fill(start).map((element, index) => element + index);
 
 const charRange = (start, end) => range(start.charCodeAt(0), end.charCodeAt(0)).map(code => String.fromCharCode(code));
