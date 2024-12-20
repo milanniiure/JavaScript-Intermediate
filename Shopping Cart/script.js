@@ -149,4 +149,10 @@ const addToCartBtns = document.getElementsByClassName("add-to-cart-btn");
             cart.addItem(Number(event.target.id), products);
         })
     }
-);s
+);
+
+cartBtn.addEventListener("click", () => {
+    isCartShowing = !isCartShowing;
+    showHideCartSpan.textContent = isCartShowing ? "Hide" : "Show";
+    cartContainer.style.display = isCartShowing ? "block" : "none";
+});
