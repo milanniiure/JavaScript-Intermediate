@@ -67,6 +67,15 @@ const animate = () => {
 }
 
 
+const keys = {
+    rightKey: {
+        pressed: false
+    },
+    leftKey: {
+        pressed: false
+    }
+};
+
 const startGame = () => {
     canvas.style.display = "block";
     startScreen.style.display = "none";
