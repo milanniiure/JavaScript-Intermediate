@@ -97,6 +97,10 @@ const platforms = platformPositions.map(
 const animate = () => {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    platforms.forEach((platform) => {
+        platform.draw();
+    });
     player.update();
 
     if (keys.rightKey.pressed && player.position.x < proportionalSize(400)) {
@@ -138,9 +142,11 @@ const animate = () => {
             player.position.y <= platform.position.y + platform.height,
         ];
 
-
+        if (platformDetectionRules.every(rule => rule)) {
+            player.position.y = platform.position.y + player.height;
+            player.velocity.y = gravity;
+        };
     });
-
 }
 
 
