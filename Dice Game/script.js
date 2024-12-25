@@ -31,6 +31,15 @@ const rollDice = () => {
 };
 
 
+rollDiceBtn.addEventListener("click", () => {
+    if (rolls >= 3) {
+        alert("select a score");
+    } else {
+        rollDice();
+        rolls++;
+    }
+});
+
 rulesBtn.addEventListener("click", () => {
     isModalShowing = !isModalShowing;
 
@@ -43,3 +52,4 @@ rulesBtn.addEventListener("click", () => {
     }
 });
 
+//
