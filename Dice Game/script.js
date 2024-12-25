@@ -17,6 +17,9 @@ let rolls = 0;
 let score = 0;
 let round = 1;
 
+/*
+Logic to generate random number
+*/
 const rollDice = () => {
     diceValuesArr = [];
 
@@ -30,7 +33,7 @@ const rollDice = () => {
     });
 };
 
-
+//It updates stats
 const updateStats = () => {
     rollsElement.textContent = rolls;
     roundElement.textContent = round;
@@ -40,6 +43,7 @@ const updateRadioOption = (index,scoreValue) => {
 
 }
 
+//Event listener to roll dice button
 rollDiceBtn.addEventListener("click", () => {
     if (rolls >= 3) {
         alert("select a score");
@@ -50,6 +54,7 @@ rollDiceBtn.addEventListener("click", () => {
     }
 });
 
+//Rules btn event listener
 rulesBtn.addEventListener("click", () => {
     isModalShowing = !isModalShowing;
 
