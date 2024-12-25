@@ -31,12 +31,18 @@ const rollDice = () => {
 };
 
 
+const updateStats = () => {
+    rollsElement.textContent = rolls;
+    roundElement.textContent = round;
+}
+
 rollDiceBtn.addEventListener("click", () => {
     if (rolls >= 3) {
         alert("select a score");
     } else {
         rollDice();
         rolls++;
+        updateStats();
     }
 });
 
@@ -52,4 +58,3 @@ rulesBtn.addEventListener("click", () => {
     }
 });
 
-//
