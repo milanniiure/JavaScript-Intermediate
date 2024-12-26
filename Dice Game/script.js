@@ -82,7 +82,16 @@ const getHighestDuplicates = (arr) => {
     updateRadioOption(5, 0);
 };
 
+const resetRadioOptions = () => {
+    scoreInputs.forEach((input) => {
+        input.disabled = true;
+        input.checked = false;
+    });
 
+    scoreSpans.forEach((span) => {
+        span.textContent = "";
+    });
+};
 
 //Event listener to roll dice button
 rollDiceBtn.addEventListener("click", () => {
