@@ -128,12 +128,10 @@ rollDiceBtn.addEventListener("click", () => {
         updateStats();
         getHighestDuplicates(diceValuesArr);
         detectFullHouse(diceValuesArr);
-
-
     }
 });
 
-//Rules btn event listener
+//Rules btn event listenerr
 rulesBtn.addEventListener("click", () => {
     isModalShowing = !isModalShowing;
 
