@@ -39,9 +39,11 @@ const updateStats = () => {
     roundElement.textContent = round;
 }
 
-const updateRadioOption = (index,scoreValue) => {
-
-}
+const updateRadioOption = (index, score) => {
+    scoreInputs[index].disabled = false;
+    scoreInputs[index].value = score;
+    scoreSpans[index].textContent = `, score = ${score}`;
+};
 
 //Event listener to roll dice button
 rollDiceBtn.addEventListener("click", () => {
