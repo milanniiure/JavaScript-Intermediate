@@ -117,6 +117,25 @@ const resetRadioOptions = () => {
     });
 };
 
+const resetGame = () => {
+    diceValuesArr = [0, 0, 0, 0, 0];
+    score = 0;
+    round = 1;
+    rolls = 0;
+
+    listOfAllDice.forEach((dice, index) => {
+        dice.textContent = diceValuesArr[index];
+    });
+
+    totalScoreElement.textContent = score;
+    scoreHistory.innerHTML = "";
+
+    rollsElement.textContent = rolls;
+    roundElement.textContent = round;
+
+    resetRadioOptions();
+};
+
 
 const checkForStraights = (arr) => {
     const sortedArr = [...arr].sort((a, b) => a - b);
