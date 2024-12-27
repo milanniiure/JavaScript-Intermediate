@@ -117,6 +117,27 @@ const resetRadioOptions = () => {
     });
 };
 
+
+const checkForStraights = (arr) => {
+    const sortedArr = [...arr].sort((a, b) => a - b);
+    const uniqueSortedArr = [...new Set(sortedArr)];
+
+    if (uniqueSortedArr.length === 5 && uniqueSortedArr[4] - uniqueSortedArr[0] === 4) {
+        updateRadioOption(3, 30); // Small straight score of 30
+        updateRadioOption(4, 40); // Large straight score of 40
+    } else if (uniqueSortedArr.length >= 4) {
+        for (let i = 0; i < uniqueSortedArr.length - 3; i++) {
+            if (uniqueSortedArr[i + 3] - uniqueSortedArr[i] === 3) {
+                updateRadioOption(3, 30); // Small straight score of 30
+                break;
+            }
+        }
+    }
+
+    updateRadioOption(5, 0); // No straight score of 0
+};
+
+
 //Event listener to roll dice button
 rollDiceBtn.addEventListener("click", () => {
     if (rolls === 3) {
