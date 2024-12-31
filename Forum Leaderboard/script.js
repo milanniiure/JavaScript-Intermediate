@@ -29,6 +29,13 @@ const forumCategory = (id) => {
         selectedCategory.category = "General";
         selectedCategory.id = 1;
     }
+    const url = `${forumCategoryUrl}${selectedCategory.className}/${id}`;
+    const linkText = selectedCategory.category;
+    const linkClass = `category ${selectedCategory.className}`;
+
+    return `<a href="${url}" class="${linkClass}" target="_blank">
+    ${linkText}
+    </a>`;
 
 };
 
@@ -93,6 +100,7 @@ const showLatestPosts = (data) => {
         <tr>
             <td>
             <p class="post-title">${title}</p>
+            ${forumCategory(category_id)}
             </td>
             <td></td>
             <td>${posts_count - 1}</td>
