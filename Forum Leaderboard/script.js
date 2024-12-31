@@ -89,6 +89,7 @@ const fetchData = async () => {
     try {
         const res = await fetch(forumLatest);
         const data = await res.json();
+        showLatestPosts(data);
     } catch (err) {
         console.log(err);
     }
@@ -114,7 +115,7 @@ const showLatestPosts = (data) => {
         return `
         <tr>
             <td>
-            <p class="post-title">${title}</p>
+            <a href="${forumTopicUrl}${slug}/${id}" class="post-title" target="_blank">${title}</a>
             ${forumCategory(category_id)}
             </td>
             <td>
