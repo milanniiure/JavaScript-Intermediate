@@ -4,7 +4,7 @@ const resultDiv = document.getElementById("result");
 
 const checkPalindrome = () => {
     const input = textInput.value.trim();
-    
+
     if (input === "") {
         resultDiv.textContent = "Please input a value";
         return;
