@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome Checker</title>
     <link rel="stylesheet" href="./styles.css" />
-</head> 
+</head>
 
 <body>
     <h1>Enter the text to check palindrome:</h1>
@@ -15,8 +15,11 @@
             <form>
                 <label for="text-input">Input the text to check
                     palindrome!</label><br><!--label's for value and input's id value should be same-->
-                <input type="text" id="textInput" name="textInput">
+                <input type="text" id="text-input" name="textInput">
+                <button type="button" id="check-btn">Check</button>
+                <p id="result">Output:</p>
             </form>
+            <div id="result"></div>
         </div>
     </main>
     <script src="./script.js"></script>
