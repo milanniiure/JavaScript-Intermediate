@@ -1,10 +1,10 @@
-const textInput = document.getElementById("textn-input");
+const textInput = document.getElementById("text-input");
 const checkBtn = document.getElementById("check-btn");
 const resultDiv = document.getElementById("result");
 
 const checkPalindrome = () => {
     const input = textInput.value.trim();
-    
+
     if (input === "") {
         resultDiv.textContent = "Please input a value";
         return;
