@@ -12,7 +12,7 @@ const checkPalindrome = () => {
     const normalizedInput = input.toLowerCase().replace(/[^a-z0-9]/g, '');
     const reversedInput = normalizedInput.split('').reverse().join('');
     const isPalindrome = normalizedInput === reversedInput;
-    const resultMessage = isPalindrome ? "The input is a palindrome." : "The input is not a palindrome.";
+    const resultMessage = isPalindrome ? `${input} is a palindrome` : `${input} is not a palindrome`;
     resultDiv.textContent = resultMessage;  
 }
 
