@@ -37,7 +37,7 @@ const convertedRoman = () => {
 };
 
 function  intoRoman (){
-
+    let roman = "";
 }
 
 convertBtn.addEventListener("click", convertedRoman);
