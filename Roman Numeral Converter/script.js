@@ -54,5 +54,21 @@ for loop : iterate through [symbol, value] pair in the romanTable array (symbol:
             and value represents (1000, 500, 100, 50, 10, 5, 1)
 
 while loop: continues to run as long as the 'num' is greater than or equal to the 'value' of current symbol
+            in the while loop append the symbol to roman string,
+            and subtract the value from the 'num'
+
+Example:
+
+num = 3549
+roman = "";
+num(3549) >=1000 (append M to roman) and (subtract 1000 from num which is 3549) now num = 2549
+num(2549) >=1000 (append M to roman) and (subtract 1000 from num which is 2549) now num = 1549
+num(1549) >=1000 (append M to roman) and (subtract 1000 from num which is 1549) now num = 549
+num(549) >=500 (append D to roman) and (subtract 500 from num which is 549) now num = 49
+num(49) >=50 (append L to roman) and (subtract 50 from num which is 49) now num = 49
+num(49) >=40 (append XL to roman) and (subtract 40 from num which is 49) now num = 9
+num(9) >=9 (append IX to roman) and (subtract 9 from num which is 9) now num = 0
+
+Finally, roman = "MMMDXLIX"
 
 */
