@@ -4,21 +4,22 @@ const convertBtn = document.getElementById("convert-btn");
 
 const resultDiv = document.getElementById("output");
 
-const romanNumerals = [
-    { value: 1000, numeral: "M" },
-    { value: 900, numeral: "CM" },
-    { value: 500, numeral: "D" },
-    { value: 400, numeral: "CD" },
-    { value: 100, numeral: "C" },
-    { value: 90, numeral: "XC" },
-    { value: 50, numeral: "L" },
-    { value: 40, numeral: "XL" },
-    { value: 10, numeral: "X" },
-    { value: 9, numeral: "IX" },
-    { value: 5, numeral: "V" },
-    { value: 4, numeral: "IV" },
-    { value: 1, numeral: "I" }
+const romanTable = [
+    ['M', 1000],
+    ['CM', 900],
+    ['D', 500],
+    ['CD', 400],
+    ['C', 100],
+    ['XC', 90],
+    ['L', 50],
+    ['XL', 40],
+    ['X', 10],
+    ['IX', 9],
+    ['V', 5],
+    ['IV', 4],
+    ['I', 1]
 ];
+
 
 const convertedRoman = () => {
 
@@ -41,3 +42,17 @@ function  intoRoman (){
 }
 
 convertBtn.addEventListener("click", convertedRoman);
+
+
+/*
+LOGIC TO CONVERT INTEGER TO ROMAN NUMERAL
+
+roman : a string variable.. it accumulates roman numeral symbols as the input number is decomposed
+num : the input number to be converted to roman numeral
+
+for loop : iterate through [symbol, value] pair in the romanTable array (symbol: represents M, D, C, L, X, V, I)
+            and value represents (1000, 500, 100, 50, 10, 5, 1)
+
+while loop: continues to run as long as the 'num' is greater than or equal to the 'value' of current symbol
+
+*/
