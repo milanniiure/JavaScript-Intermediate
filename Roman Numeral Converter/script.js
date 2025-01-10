@@ -62,16 +62,58 @@ TABLE OF ROMAN NUMERALS:
 4 = IV
 1 = I
 
-Now, let's say we have a number 3549
-1. Divide 3549 by 1000, we get 3. So, 3 * 1000 = 3000. Add 3000 to roman. roman = "MMM"
-2. Subtract 3000 from 3549, we get 549
-3. Divide 549 by 500, we get 1. So, 1 * 500 = 500. Add 500 to roman. roman = "MMMD"
-4. Subtract 500 from 549, we get 49
-5. Divide 49 by 40, we get 1. So, 1 * 40 = 40. Add 40 to roman. roman = "MMMDXL"
-6. Subtract 40 from 49, we get 9
-7. Divide 9 by 9, we get 1. So, 1 * 9 = 9. Add 9 to roman. roman = "MMMDXLIX"
+Now, let's say we have a number 3549 [Rule:  subtraction after checking  if num >= value in the table]
+roman = ""
+num = 3549
 
+Symbol: M, value: 1000
 
+3549 >= 1000, 3549 is greater than or equal to 1000, so subtracted 1000 from 3549 
+roman = "M"
+num = 3549 - 1000 = 2549
+
+2549 >= 1000, so
+roman = "MM"
+num = 2549 - 1000 = 1549
+
+1549 >= 1000, so
+roman = "MMM"
+num = 1549 - 1000 = 549
+
+Symbol : CM, value: 900
+skip to next symbol cause 549 < 900 [rule: subtract after num greater or equal than value]
+
+Symbol: D, value: 500
+549 >= 500, so
+roman = "MMMD"
+num = 549 - 500 = 49
+
+Symbol: CD, value: 400
+skip to next symbol cause 49 < 400
+
+Symbol: C, value: 100
+skip to next symbol cause 49 < 100
+
+Symbol: XC, value: 90
+skip to next symbol cause 49 < 90
+
+symbol: L, value: 50
+skip to next symbol cause 49 < 50
+
+symbol: XL, value: 40
+49 >= 40, so
+roman = "MMMDXL"
+num = 49 - 40 = 9
+
+symbol: X, value: 10
+skip to next symbol cause 9 < 10
+
+Symbol: IX, value: 9
+9 >= 9, so
+roman = "MMMDXLIX"
+num = 9 - 9 = 0
+
+num = 0, so we are done
 Finally, roman = "MMMDXLIX"
 
 */
