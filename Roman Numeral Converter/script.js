@@ -34,27 +34,21 @@ function convertToRoman() {
 
 
 
-const convertedRoman = () => {
+convertBtn.addEventListener("click", (event) => {
+    event.preventDefault();
     const input = numberInput.value.trim();
     const num = Number(input);
-
     if (input === "" || isNaN(num)) {
         resultDiv.textContent = "Please enter a valid number";
-        return;
     } else if (num < 1) {
         resultDiv.textContent = "Please enter a number greater than or equal to 1";
-        return;
     } else if (num >= 4000) {
         resultDiv.textContent = "Please enter a number less than 4000";
-        return;
     } else {
         const romanNumeral = convertToRoman(num);
         resultDiv.textContent = `Roman Numeral: ${romanNumeral}`;
     }
-};
-
-
-convertBtn.addEventListener("click", convertedRoman);
+});
 
 
 /*
