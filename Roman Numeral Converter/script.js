@@ -58,11 +58,36 @@ while loop: continues to run as long as the 'num' is greater than or equal to th
             and subtract the value from the 'num'
 
 Example:
-
-num = 3549
 roman = "";
-num(3549) >=1000 (append M to roman) and (subtract 1000 from num which is 3549) now num = 2549
-num(2549) >=1000 (append M to roman) and (subtract 1000 from num which is 2549) now num = 1549
+num = 3549
+
+check if num is greater than or equal to roman value, since 3549 is greater than 1000, we should subtract 1000 from num
+num(3549) >=1000
+3549-1000 = 2549 // M will be added in roman variable cause we subtracted 1000 now
+roman = "M" 
+now, num = 2549
+
+again check if, num is greater than or equal to roman value, since 2549 is greater than 1000, we should subtract 1000 from num
+num(2549) >=1000 
+2549-1000 = 1549 //another M will be added in roman variable cause we subtracted 1000, now
+roman = "MM" 
+now, num = 1549
+
+again check if, num is greater than or equal to roman value, since 1549 is greater than 1000, we should subtract 1000 from num
+num(1549) >=1000
+1549-1000 = 549 //another M will be added in roman variable cause we subtracted 1000, now
+roman = "MMM"
+now, num = 549
+
+again check if, num is greater than or equal to roman value, since 549 is greater than 500, we should subtract 500 from num
+we didnot do 549-1000 cause 549 is less than 1000, rule is to subtract if num is greater than value
+num(549) >=500
+549-500 = 49 //D will be added in roman variable cause we subtracted 500, now
+roman = "MMMD"
+now, num = 49
+
+again check if, num is greater than roman value, since 49 is smaller 
+
 num(1549) >=1000 (append M to roman) and (subtract 1000 from num which is 1549) now num = 549
 num(549) >=500 (append D to roman) and (subtract 500 from num which is 549) now num = 49
 num(49) >=50 (append L to roman) and (subtract 50 from num which is 49) now num = 49
