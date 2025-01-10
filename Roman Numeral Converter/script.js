@@ -35,24 +35,24 @@ function convertToRoman() {
 
 
 const convertedRoman = () => {
+    const input = numberInput.value.trim();
+    const num = Number(input);
 
-    const input = isNaN(numberInput.value.trim());
-    if (input === "") {
+    if (input === "" || isNaN(num)) {
         resultDiv.textContent = "Please enter a valid number";
         return;
-    } else if (input <= 0) {
+    } else if (num < 1) {
         resultDiv.textContent = "Please enter a number greater than or equal to 1";
-    } else if (input >= 4000) {
-        resultDiv.textContent = "Please enter a number less than or equal to 3999";
+        return;
+    } else if (num >= 4000) {
+        resultDiv.textContent = "Please enter a number less than 4000";
         return;
     } else {
-
+        const romanNumeral = convertToRoman(num);
+        resultDiv.textContent = `Roman Numeral: ${romanNumeral}`;
     }
 };
 
-function intoRoman() {
-    let roman = "";
-}
 
 convertBtn.addEventListener("click", convertedRoman);
 
