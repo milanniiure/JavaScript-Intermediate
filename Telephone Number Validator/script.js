@@ -6,13 +6,12 @@ const clearBtn = document.getElementById("clear-btn");
 
 const resultDiv = document.getElementById("results-div");
 
-function validatePhoneNumber(phoneNumber){
-    if(userInput === ""){
+function validatePhoneNumber(){
+    if(checkBtn === ""){
         alert("Please provide a phone number");
     }
-    const regEx = /^\d{10}$/;
-    return regEx.test(phoneNumber);
+    
 }
 
 
-checkBtn.addEventListener("click", validatePhoneNumber(999888));   
+checkBtn.addEventListener("click", validatePhoneNumber);   
