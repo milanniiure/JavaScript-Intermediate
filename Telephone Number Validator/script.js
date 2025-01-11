@@ -6,14 +6,13 @@ const clearBtn = document.getElementById("clear-btn");
 
 const resultDiv = document.getElementById("results-div");
 
-const phoneRegex = /^(\+?234|0)([789]\d{9})$/;
-
-checkBtn.addEventListener("click", () => {
-    const userInput = document.getElementById("phone-number").value;
-
-    if (phoneRegex.test(userInput)) {
-        resultDiv.innerHTML = `<p class="success">Valid Phone Number</p>`;
-    } else {
-        resultDiv.innerHTML = `<p class="error">Invalid Phone Number</p>`;
+function validatePhoneNumber(phoneNumber){
+    if(userInput === ""){
+        alert("Please provide a phone number");
     }
-});
+    const regEx = /^\d{10}$/;
+    return regEx.test(phoneNumber);
+}
+
+
+checkBtn.addEventListener("click", validatePhoneNumber(999888));   
