@@ -4,50 +4,53 @@ const convertBtn = document.getElementById("convert-btn");
 
 const resultDiv = document.getElementById("output");
 
-function convertToRoman() {
-    const romanNumerals = [
-        ['M', 1000],
-        ['CM', 900],
-        ['D', 500],
-        ['CD', 400],
-        ['C', 100],
-        ['XC', 90],
-        ['L', 50],
-        ['XL', 40],
-        ['X', 10],
-        ['IX', 9],
-        ['V', 5],
-        ['IV', 4],
-        ['I', 1]
-    ];
-
-    let roman = "";
-    for (const [symbol, value] of romanNumerals) {
-        while (num >= value) {
-            roman += symbol;
-            num -= value;
-        }
-    }
-
-    return roman;
-}
+const romanTable = [
+    ['M', 1000],
+    ['CM', 900],
+    ['D', 500],
+    ['CD', 400],
+    ['C', 100],
+    ['XC', 90],
+    ['L', 50],
+    ['XL', 40],
+    ['X', 10],
+    ['IX', 9],
+    ['V', 5],
+    ['IV', 4],
+    ['I', 1]
+];
 
 
+const convertedRoman = () => {
 
-convertBtn.addEventListener("click", (event) => {
-    event.preventDefault();
     const input = numberInput.value.trim();
-    const num = Number(input);
+    let num = Number(input);
     if (input === "" || isNaN(num)) {
         resultDiv.textContent = "Please enter a valid number";
-    } else if (num < 1) {
+        return;
+    } else if (input <= 0) {
         resultDiv.textContent = "Please enter a number greater than or equal to 1";
-    } else if (num >= 4000) {
-        resultDiv.textContent = "Please enter a number less than 4000";
+    } else if (input >= 4000) {
+        resultDiv.textContent = "Please enter a number less than or equal to 3999";
+        return;
     } else {
-        const romanNumeral = convertToRoman(num);
-        resultDiv.textContent = `Roman Numeral: ${romanNumeral}`;
+        let roman = "";
+        for (const [symbol, value] of romanTable) {
+            while (num >= value) {
+                roman += symbol;
+                num -= value;
+            }
+        }
+        resultDiv.textContent = `Roman Numeral: ${roman}`;
     }
+};
+
+
+
+const form = document.getElementById("form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    convertedRoman();
 });
 
 
