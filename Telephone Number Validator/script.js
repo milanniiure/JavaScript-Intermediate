@@ -6,12 +6,14 @@ const clearBtn = document.getElementById("clear-btn");
 
 const resultDiv = document.getElementById("results-div");
 
-function validatePhoneNumber(){
-    if(checkBtn === ""){
-        alert("Please provide a phone number");
+function validatePhoneNumber(event){
+    event.preventDefault();
+    let phoneNumber = userInput.value.trim();
+    
+    if(phoneNumber === ""){
+        alert("Please enter a phone number");
     }
     
 }
-
 
 checkBtn.addEventListener("click", validatePhoneNumber);   
