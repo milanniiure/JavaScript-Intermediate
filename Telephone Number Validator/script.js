@@ -4,7 +4,7 @@ const checkBtn = document.getElementById("check-btn");
 
 const clearBtn = document.getElementById("clear-btn");
 
-const resultDiv = document.getElementById("results-div");
+const resultsDiv = document.getElementById("results-div");
 
 //checks if the phone number is valid
 function validatePhoneNumber(event) {
@@ -22,20 +22,17 @@ function validatePhoneNumber(event) {
     // Test the trimmed user input against the phone number regex
     let phoneTest = phoneRegex.test(phoneNumber);//true if valid false it not
     if (phoneTest) {
-        let msg = `Valid US number: ${phoneNumber}`;
-        console.log(msg);
-        resultDiv.textContent = msg;
-
+        resultsDiv.textContent = "Valid US number: " + phoneNumber;
+        userInput.value = "";
     } else {
-        let msg = `Invalid US number: ${phoneNumber}`;
-        console.log(msg);
-        resultDiv.textContent = msg;
+        resultsDiv.textContent = "Invalid US number: " + phoneNumber;
+        userInput.value = "";
     }
 }
 //clears the input and result div
 clearBtn.addEventListener("click", function () {
     userInput.value = "";
-    resultDiv.textContent = "";
+    resultsDiv.textContent = "";
 });
 //event listener for the check button
 checkBtn.addEventListener("click", validatePhoneNumber);   
