@@ -11,4 +11,12 @@ let cid = [
     ['ONE HUNDRED', 100]
 ];
 
-let cash = document.getElementById();
+let cash = document.getElementById("cash");
+let purchase = document.getElementById("purchase-btn");
+
+purchase.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    let cashGiven = Number(cash.value);
+    console.log(cashGiven);
+});
