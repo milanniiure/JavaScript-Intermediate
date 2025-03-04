@@ -18,5 +18,11 @@ purchase.addEventListener("click", function(event) {
     event.preventDefault();
 
     let cashGiven = Number(cash.value);
-    console.log(cashGiven);
+    
+    if (cashGiven < price) {
+        alert("Customer does not have enough money to purchase the item");
+        return;
+    }else{
+        console.log("cash is enough");
+    }
 });
