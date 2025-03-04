@@ -22,7 +22,9 @@ purchase.addEventListener("click", function(event) {
     if (cashGiven < price) {
         alert("Customer does not have enough money to purchase the item");
         return;
+    }else if(cashGiven === price) {
+        document.getElementById("change-due").textContent = "No change due - customer paid with exact cash";
     }else{
-        console.log("cash is enough");
+        
     }
 });
