@@ -55,6 +55,9 @@ purchase.addEventListener("click", function(event) {
         "TWENTY": 20,
         "ONE HUNDRED": 100
     };
+    
+    let remainingCid = JSON.parse(JSON.stringify(cid)); // Clone CID to update later
+
 
     for (let [name, amount] of availableCash) {
         let value = currencyValues[name];
@@ -65,6 +68,9 @@ purchase.addEventListener("click", function(event) {
             changeToGive = Math.round(changeToGive * 100) / 100; // Fix floating point issue
             amount -= value;
             amountToGive += value;
+
+            // Update remaining CID
+            remainingCid.find(curr => curr[0] === name)[1] -= value;
         }
 
         if (amountToGive > 0) {
@@ -75,6 +81,16 @@ purchase.addEventListener("click", function(event) {
     //If exact change cannot be given, return "INSUFFICIENT_FUNDS"
     if (changeToGive > 0) {
         document.getElementById("change-due").textContent = "Status: INSUFFICIENT_FUNDS";
+        return;
+    }
+
+    //Determine if the cash drawer is now empty (Status: CLOSED)
+    let remainingCashInDrawer = remainingCid.reduce((sum, curr) => sum + curr[1], 0);
+    remainingCashInDrawer = Math.round(remainingCashInDrawer * 100) / 100;
+
+    //If the total cash left in the drawer is exactly the change due, return "CLOSED"
+    if (totalCashInDrawer - changeDue === 0) {
+        document.getElementById("change-due").textContent = `Status: CLOSED ${changeArray.join(" ")}`;
     } else {
         document.getElementById("change-due").textContent = `Status: OPEN ${changeArray.join(" ")}`;
     }
