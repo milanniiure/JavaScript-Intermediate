@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,57 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
+
 <body>
-    
+    <form>
+        <label for="search-input">Search Pokemon Name or ID:</label><br><br>
+        <input type="text" id="search-input" required>
+        <button type="button" id="search-button">Search</button>
+    </form>
+    <div>
+        <p id="pokemon-name">Name</p>
+        <p id="pokemon-id">ID</p>
+        <p id="weight">Weight</p>
+        <p id="height">Height</p>
+        <p id="types">Type</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Base</th>
+                <th scope="col">Stats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="hp">HP:</td>
+                <td>hi</td>
+            </tr>
+            <tr>
+                <td id="attack">Attack:</td>
+                <td>hi</td>
+            </tr>
+            <tr>
+                <td id="defense">Defense:</td>
+                <td>hi</td>
+            </tr>
+            <tr>
+                <td id="special-attack">Sp. Attack</td>
+                <td>hi</td>
+            </tr>
+            <tr>
+                <td id="special-defense">Sp. Defense</td>
+                <td>hi</td>
+            </tr>
+            <tr>
+                <td id="speed">Speed</td>
+                <td>hi</td>
+            </tr>
+        </tbody>
+    </table>
 
     <script src="script.js"></script>
 </body>
+
 </html>
