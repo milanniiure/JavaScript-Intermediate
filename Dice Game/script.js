@@ -10,91 +10,82 @@ const keepScoreBtn = document.getElementById("keep-score-btn");
 const rulesBtn = document.getElementById("rules-btn");
 const rulesContainer = document.querySelector(".rules-container");
 
-
 let isModalShowing = false;
 let diceValuesArr = [];
 let rolls = 0;
 let score = 0;
 let round = 1;
 
-/*
-Logic to generate random number
-*/
+/**
+ * Rolls 5 dice and updates the dice values array
+ */
 const rollDice = () => {
     diceValuesArr = [];
 
     for (let i = 0; i < 5; i++) {
         const randomDice = Math.floor(Math.random() * 6) + 1;
         diceValuesArr.push(randomDice);
-    };
+    }
 
     listOfAllDice.forEach((dice, index) => {
         dice.textContent = diceValuesArr[index];
     });
 };
 
-//It updates stats
+/**
+ * Updates UI stats
+ */
 const updateStats = () => {
     rollsElement.textContent = rolls;
     roundElement.textContent = round;
-}
+};
 
+/**
+ * Enables a specific radio button with a given score
+ */
 const updateRadioOption = (index, score) => {
     scoreInputs[index].disabled = false;
     scoreInputs[index].value = score;
     scoreSpans[index].textContent = `, score = ${score}`;
 };
 
-
+/**
+ * Updates the total score and appends history
+ */
 const updateScore = (selectedValue, achieved) => {
     score += parseInt(selectedValue);
     totalScoreElement.textContent = score;
-
     scoreHistory.innerHTML += `<li>${achieved} : ${selectedValue}</li>`;
 };
 
+/**
+ * Finds the highest duplicate count and updates score accordingly
+ */
 const getHighestDuplicates = (arr) => {
     const counts = {};
+    
+    arr.forEach(num => counts[num] = (counts[num] || 0) + 1);
 
-    for (const num of arr) {
-        if (counts[num]) {
-            counts[num]++;
-        } else {
-            counts[num] = 1;
-        }
-    }
-
-    let highestCount = 0;
-
-    for (const num of arr) {
-        const count = counts[num];
-        if (count >= 3 && count > highestCount) {
-            highestCount = count;
-        }
-        if (count >= 4 && count > highestCount) {
-            highestCount = count;
-        }
-    }
+    let highestCount = Math.max(...Object.values(counts));  // 🔹 CHANGED HERE 🔹 Simplified finding the highest duplicate count
 
     const sumOfAllDice = arr.reduce((a, b) => a + b, 0);
 
     if (highestCount >= 4) {
         updateRadioOption(1, sumOfAllDice);
-    }
-
-    if (highestCount >= 3) {
+    } else if (highestCount >= 3) {
         updateRadioOption(0, sumOfAllDice);
     }
 
-    updateRadioOption(5, 0);
+    // Removed updateRadioOption(5, 0) from here 🔹 CHANGED HERE 🔹
 };
 
+/**
+ * Detects a full house (3 of a kind + a pair) and updates score
+ */
 const detectFullHouse = (arr) => {
     const counts = {};
-
-    for (const num of arr) {
-        counts[num] = counts[num] ? counts[num] + 1 : 1;
-    }
+    
+    arr.forEach(num => counts[num] = (counts[num] || 0) + 1);
 
     const hasThreeOfAKind = Object.values(counts).includes(3);
     const hasPair = Object.values(counts).includes(2);
@@ -103,9 +94,31 @@ const detectFullHouse = (arr) => {
         updateRadioOption(2, 25);
     }
 
-    updateRadioOption(5, 0);
+    // Removed updateRadioOption(5, 0) from here 🔹 CHANGED HERE 🔹
 };
 
+/**
+ * Detects small and large straights and updates score
+ */
+const checkForStraights = (arr) => {
+    const sortedArr = [...new Set(arr)].sort((a, b) => a - b);  
+    const uniqueNumbersStr = sortedArr.join("");  // 🔹 CHANGED HERE 🔹 Optimized straight checking
+
+    const smallStraights = ["1234", "2345", "3456"];
+    const largeStraights = ["12345", "23456"];
+
+    if (largeStraights.includes(uniqueNumbersStr)) {
+        updateRadioOption(4, 40);
+    } else if (smallStraights.some(straight => uniqueNumbersStr.includes(straight))) {
+        updateRadioOption(3, 30);
+    }
+
+    // Removed updateRadioOption(5, 0) from here 🔹 CHANGED HERE 🔹
+};
+
+/**
+ * Resets radio buttons for the next round
+ */
 const resetRadioOptions = () => {
     scoreInputs.forEach((input) => {
         input.disabled = true;
@@ -117,6 +130,9 @@ const resetRadioOptions = () => {
     });
 };
 
+/**
+ * Resets the game back to initial state
+ */
 const resetGame = () => {
     diceValuesArr = [0, 0, 0, 0, 0];
     score = 0;
@@ -136,28 +152,9 @@ const resetGame = () => {
     resetRadioOptions();
 };
 
-
-const checkForStraights = (arr) => {
-    const sortedArr = [...arr].sort((a, b) => a - b);
-    const uniqueSortedArr = [...new Set(sortedArr)];
-
-    if (uniqueSortedArr.length === 5 && uniqueSortedArr[4] - uniqueSortedArr[0] === 4) {
-        updateRadioOption(3, 30); // Small straight score of 30
-        updateRadioOption(4, 40); // Large straight score of 40
-    } else if (uniqueSortedArr.length >= 4) {
-        for (let i = 0; i < uniqueSortedArr.length - 3; i++) {
-            if (uniqueSortedArr[i + 3] - uniqueSortedArr[i] === 3) {
-                updateRadioOption(3, 30); // Small straight score of 30
-                break;
-            }
-        }
-    }
-
-    updateRadioOption(5, 0); // No straight score of 0
-};
-
-
-//Event listener to roll dice button
+/**
+ * Rolls dice, checks scores, and updates UI when the button is clicked
+ */
 rollDiceBtn.addEventListener("click", () => {
     if (rolls === 3) {
         alert("You have made three rolls this round. Please select a score.");
@@ -168,23 +165,25 @@ rollDiceBtn.addEventListener("click", () => {
         updateStats();
         getHighestDuplicates(diceValuesArr);
         detectFullHouse(diceValuesArr);
+        checkForStraights(diceValuesArr);
+
+        updateRadioOption(5, 0);  // 🔹 CHANGED HERE 🔹 Ensured this happens only once
     }
 });
 
-//Rules btn event listenerr
+/**
+ * Toggles rules visibility when the button is clicked
+ */
 rulesBtn.addEventListener("click", () => {
     isModalShowing = !isModalShowing;
 
-    if (isModalShowing) {
-        rulesBtn.textContent = "Hide rules";
-        rulesContainer.style.display = "block";
-    } else {
-        rulesBtn.textContent = "Show rules";
-        rulesContainer.style.display = "none";
-    }
+    rulesBtn.textContent = isModalShowing ? "Hide rules" : "Show rules";
+    rulesContainer.style.display = isModalShowing ? "block" : "none";
 });
 
-
+/**
+ * Handles keeping score and progressing rounds
+ */
 keepScoreBtn.addEventListener("click", () => {
     let selectedValue;
     let achieved;
@@ -203,6 +202,7 @@ keepScoreBtn.addEventListener("click", () => {
         updateStats();
         resetRadioOptions();
         updateScore(selectedValue, achieved);
+
         if (round > 6) {
             setTimeout(() => {
                 alert(`Game Over! Your total score is ${score}`);
