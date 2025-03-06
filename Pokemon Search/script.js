@@ -14,6 +14,3 @@ const specialAttack = document.getElementById('specialAttack');
 const specialDefense = document.getElementById('specialDefense');
 const speed = document.getElementById('speed');
 
-searchButton.addEventListener("click", ()=>{
-    const pokemon = searchInput.value.toLowerCase();
-})
