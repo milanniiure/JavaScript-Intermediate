@@ -14,3 +14,17 @@ const specialAttack = document.getElementById('specialAttack');
 const specialDefense = document.getElementById('specialDefense');
 const speed = document.getElementById('speed');
 
+async function fetchPokemonData(pokemon) {
+    try {
+        const response = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${pokemon}`);
+        
+        if (!response.ok) {
+            throw new Error("Pokémon not found");
+        }
+
+        const data = await response.json();
+        updateUI(data);
+    } catch (error) {
+        alert("Pokémon not found");
+    }
+}
