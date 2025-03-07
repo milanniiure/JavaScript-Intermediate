@@ -28,3 +28,13 @@ async function fetchPokemonData(pokemon) {
         alert("Pokémon not found");
     }
 }
+
+searchButton.addEventListener("click", () => {
+    const pokemon = searchInput.value.trim().toLowerCase(); // Get input & format it
+    if (!pokemon) {
+        alert("Pokémon not found");
+        return;
+    }
+    
+    fetchPokemonData(pokemon);
+});
