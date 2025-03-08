@@ -16,6 +16,7 @@ const speed = document.getElementById('speed');
 
 const pokemonImage = document.getElementById('pokemon-image');
 
-
-
-
+fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
+.then(response => response.json()) //convert response to json
+.then(data => console.log(data))  //Handle the data
+.catch(error => console.log(error)); //Handle any errors
