@@ -5,24 +5,24 @@ This repository contains basic to intermediate-level JavaScript projects. The pr
 ## Projects Overview
 
 - **Project 1:** Authors Page- Similar to some about us page, api used
-- **Project 2:** Calorie Counter- Calculates calories if you're fat
+- **Project 2:** Calorie Counter- Calculates calories for fat people
 - **Project 3:** Cash Register- Similar to cash counter on some mart
 - **Project 4:** Date Formatter- Just formats the date(mm/dd/yyyy-dd/mm/yyyy-yyyy/dd/mm-many more)
 - **Project 5:** Decimal to Binary Converter- Converts decimal numbers to binary
-- **Project 6:** Dice Game- I dont even know how to play this
-- **Project 7:** Football Team Cards- I dont want to put description on this
-- **Project 8:** Forum Leaderboard- Similar to some games rank dashboard- api used
-- **Project 9:** Music Player- you don't know music player?
+- **Project 6:** Dice Game- I don't know how to play this
+- **Project 7:** Football Team Cards- I don't want to put description for this
+- **Project 8:** Forum Leaderboard- Similar to some games rank dashboard, api used
+- **Project 9:** Music Player- you don't know what music player means?
 - **Project 10:** Number Sorter- Sorts number smaller to bigger, sorting algorithm used
 - **Project 11:** Palindrome Checker- Every programmer from high school does this
 - **Project 12:** Platformer Game- Game similar to ___? fill in the blanks
 - **Project 13:** Pokemon Search- Search data related to pokemon, api used
 - **Project 14:** Rock Paper Scissors- Interesting
 - **Project 15:** Roman Numeral Converter- Roman to Integer(leetcode:easy)
-- **Project 16:** Shopping Cart- Cart mechanism,OOP used
-- **Project 17:** Spam Filter- Best for cybersecurity project but it is small,regex concept used
+- **Project 16:** Shopping Cart- Add to cart behind the scenes, OOP used
+- **Project 17:** Spam Filter- Best concept for cybersec project but it is tiny, regex concept used
 - **Project 18:** SpreadSheet- Fascinating
-- **Project 19:** Statistics Calculator- Calculate from here if you dont know statistics
+- **Project 19:** Statistics Calculator- Calculates for non-statisticians
 - **Project 20:** Telephone Number Validator- Validation concept used, nice
 - **Project 21:** Todo App- Simple one
 - **Project 22:** Role Playing Game- Interesting concept
