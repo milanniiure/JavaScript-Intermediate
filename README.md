@@ -47,4 +47,4 @@ To get started with any project in this repository, follow these steps:
 ---Fetch API
 ---Event Handling
 ---Asynchronous Javascript
---- Data Structures and Algorithm
+--- Data Structures and Algorithms
