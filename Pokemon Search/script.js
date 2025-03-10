@@ -16,7 +16,36 @@ const speed = document.getElementById('speed');
 
 const pokemonImage = document.getElementById('pokemon-image');
 
+/*
 fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon")
 .then(response => response.json()) //convert response to json
 .then(data => console.log(data))  //Handle the data
 .catch(error => console.log(error)); //Handle any errors
+*/
+
+
+/*
+There is a modern way to fetch requests
+
+async function fetchPokemonData(pokemonName){
+    try{
+        const response = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon`);
+        const data = await response.json();
+        console.log(data);
+    }catch(error){
+        console.log(error);
+    }
+}
+fetchPokemonData('pikachu');
+
+*/
+
+searchButton.addEventListener('click', () =>{
+    const pokemon = searchInput.value.trim().toLowerCase();   //input value
+
+    if(!pokemon){
+        alert("Please enter a Pokémon name or ID. ");
+        return;
+    }
+    fetchPokemonData(pokemon);
+})
