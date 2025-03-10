@@ -59,8 +59,8 @@ function updateUI(data){
             spriteImage.id = 'sprite';
             document.body.appendChild(spriteImage);
         }
-        pokemonImage.src = data.sprites.front_default;
-        pokemonImage.style.display = 'block';
+        spriteImage .src = data.sprites.front_default;
+        spriteImage .style.display = 'block';
     }
 
     types.innerHTML = '';
@@ -71,7 +71,7 @@ function updateUI(data){
     });
 
     hp.textContent = data.stats[0].base_stat
-    attack.textContent = data.stats[1].base_stat
+    attack.textContent = data.stats[1].base_stat    
     defense.textContent = data.stats[2].base_stat
     specialAttack.textContent = data.stats[3].base_stat
     specialDefense.textContent = data.stats[4].base_stat
