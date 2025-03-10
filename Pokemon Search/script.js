@@ -48,4 +48,44 @@ searchButton.addEventListener('click', () =>{
         return;
     }
     fetchPokemonData(pokemon);
-})
+});
+
+
+async function fetchPokemonData(pokemon){
+    try{
+        const response = await fetch('https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/' + pokemon);
+
+        if(!response.ok){
+            alert("Pokémon not found.");
+            return;
+        }
+        const data = await response.json();
+        updateUI(data);
+    }catch(error){
+        alert("Pokémon not found.");
+    }
+    
+}
+
+function updateUI(data){
+    pokemonName.textContent = `Name: ${data.name}`;
+    pokemonId.textContent = `ID: ${data.id}`;
+    weight.textContent = `Weight: ${data.weight}`;
+    height.textContent = `Height: ${data.height}`;
+
+    if(data.sprites.front_default){
+        pokemonImage.src = data.sprites.front_default;
+        pokemonImage.style.display = 'block';
+    }else{
+        pokemonImage.style.display = 'none';
+    }
+    types.textContent = `Types: ${data.types.map(type => type.type.name).join(', ')}`; //extract data types array and convert them into comma-separated strings
+
+    hp.textContent = `HP: ${data.stats[0].base_stat}`;
+    attack.textContent = `Attack: ${data.stats[1].base_stat}`;
+    defense.textContent = `Defense: ${data.stats[2].base_stat}`;
+    specialAttack.textContent = `Special Attack: ${data.stats[3].base_stat}`;
+    specialDefense.textContent = `Special Defense: ${data.stats[4].base_stat}`;
+    speed.textContent = `Speed: ${data.stats[5].base_stat}`;
+
+}
