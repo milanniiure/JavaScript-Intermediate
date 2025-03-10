@@ -11,10 +11,10 @@ This repository contains basic to intermediate-level JavaScript projects. The pr
 - **Project 5:** Decimal to Binary Converter- Converts decimal numbers to binary
 - **Project 6:** Dice Game- I don't know how to play this
 - **Project 7:** Football Team Cards- I don't want to put description for this
-- **Project 8:** Forum Leaderboard- Similar to some games rank dashboard, api used
+- **Project 8:** Forum Leaderboard- Similar to some game's player rank dashboard, api used
 - **Project 9:** Music Player- you don't know what music player means?
 - **Project 10:** Number Sorter- Sorts number smaller to bigger, sorting algorithm used
-- **Project 11:** Palindrome Checker- Every programmer from high school does this
+- **Project 11:** Palindrome Checker- Every student in high school does this
 - **Project 12:** Platformer Game- Game similar to ___? fill in the blanks
 - **Project 13:** Pokemon Search- Search data related to pokemon, api used
 - **Project 14:** Rock Paper Scissors- Interesting
